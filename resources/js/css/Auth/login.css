@@ -1,0 +1,39 @@
+.login-container {
+   width: 100vw;
+   height: 100vh;
+   background-image: url("../../../../public/storage/background.png");
+   background-size:cover;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.login-box {
+   display: flex;
+   flex-direction: row;
+   width: 60%;
+   height: 50%;
+}
+
+.login-logo {
+   background-image: url("../../../../public/storage/logo.png");
+   background-size: cover;
+   width: 40%;
+   border-right: 2px solid #fff;
+}
+
+.login-form {
+   width: 60%;
+   padding: 60px;
+}
+
+.display-form {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+a, a:hover {
+   color: #fff;
+   text-decoration: none;
+}
