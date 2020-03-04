@@ -4,15 +4,13 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Header from './Header'
-import Login from './Login'
+import Login from './Auth/Login'
 
 class App extends Component {
   render () {
     return (
       <BrowserRouter>
-        <div>
           <Login/>
-        </div>
       </BrowserRouter>
     )
   }
