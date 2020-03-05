@@ -22,11 +22,17 @@ SET time_zone = "+00:00";
 -- Banco de dados: `wfacciolli`
 --
 
+CREATE database wfacciolli;
+
+USE wfacciolli;
+
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `cargos`
 --
+
+
 
 CREATE TABLE `cargos` (
   `id` int(11) NOT NULL,

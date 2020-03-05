@@ -28934,6 +28934,7 @@ module.exports = invariant;
         (isObjectLike(value) && baseGetTag(value) == numberTag);
     }
 
+<<<<<<< HEAD
     /**
      * Checks if `value` is a plain object, that is, an object created by the
      * `Object` constructor or one with a `[[Prototype]]` of `null`.
@@ -28974,6 +28975,10 @@ module.exports = invariant;
       return typeof Ctor == 'function' && Ctor instanceof Ctor &&
         funcToString.call(Ctor) == objectCtorString;
     }
+=======
+// module
+exports.push([module.i, ".login-container {\r\n   width: 100vw;\r\n   height: 100vh;\r\n   background-image: url(" + escape(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../public/storage/background.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))) + ");\r\n   background-size:cover;\r\n   display: flex;\r\n   justify-content: center;\r\n   align-items: center;\r\n}\r\n\r\n.login-box {\r\n   display: flex;\r\n   flex-direction: row;\r\n   width: 60%;\r\n   height: 50%;\r\n}\r\n\r\n.login-logo {\r\n   background-image: url(" + escape(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../public/storage/logo.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))) + ");\r\n   background-size: cover;\r\n   width: 40%;\r\n   border-right: 2px solid #fff;\r\n}\r\n\r\n.login-form {\r\n   width: 60%;\r\n   padding: 60px;\r\n}\r\n\r\n.display-form {\r\n   display: flex;\r\n   flex-direction: row;\r\n   justify-content: space-between;\r\n}\r\n\r\na, a:hover {\r\n   color: #fff;\r\n   text-decoration: none;\r\n}", ""]);
+>>>>>>> f0ea7ee70dbd1dc79908e4d840ff1cba271dedc9
 
     /**
      * Checks if `value` is classified as a `RegExp` object.
@@ -83911,28 +83916,6 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./storage/app/public/background.png":
-/*!*******************************************!*\
-  !*** ./storage/app/public/background.png ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/background.png?24f34a410d0d4f2f278f9477aaabfae8";
-
-/***/ }),
-
-/***/ "./storage/app/public/logo.png":
-/*!*************************************!*\
-  !*** ./storage/app/public/logo.png ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/logo.png?6ed9debdbbbd5e0bbf2abdfd024bb666";
-
-/***/ }),
-
 /***/ 0:
 /*!*************************************************************!*\
   !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
@@ -83940,8 +83923,8 @@ module.exports = "/images/logo.png?6ed9debdbbbd5e0bbf2abdfd024bb666";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\WFacciolli\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\WFacciolli\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\invent\wfacciolli\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\invent\wfacciolli\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
