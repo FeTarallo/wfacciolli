@@ -1,7 +1,7 @@
 .login-container {
    width: 100vw;
    height: 100vh;
-   background-image: url("../../../../public/storage/background.png");
+   background-image: url("../../../../public/images/background.png");
    background-size:cover;
    display: flex;
    justify-content: center;
@@ -16,7 +16,7 @@
 }
 
 .login-logo {
-   background-image: url("../../../../public/storage/logo.png");
+   background-image: url("../../../../public/images/logo.png");
    background-size: cover;
    width: 40%;
    border-right: 2px solid #fff;

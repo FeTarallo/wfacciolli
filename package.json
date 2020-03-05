@@ -11,7 +11,7 @@
     },
     "devDependencies": {
         "@babel/preset-react": "^7.0.0",
-        "axios": "^0.19",
+        "axios": "^0.19.2",
         "cross-env": "^5.1",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.13",
@@ -22,6 +22,7 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
-        "react-router-dom": "^5.1.2"
+        "react-router-dom": "^5.1.2",
+        "sweetalert-react": "^0.4.11"
     }
 }
