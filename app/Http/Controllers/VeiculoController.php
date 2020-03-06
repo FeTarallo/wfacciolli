@@ -9,7 +9,7 @@ use App\Http\Requests\Veiculos\StoreVeiculo;
 class VeiculoController extends Controller
 {
     public function index(){
-        $veiculos = Veiculo::paginate(10);
+        $veiculos = Veiculo::all();
         return response()->json([ 'veiculos' => $veiculos ], 200);
     }
 

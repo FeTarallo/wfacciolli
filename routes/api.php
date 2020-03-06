@@ -27,8 +27,6 @@ Route::resources([
 ]);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
-    Route::get('user', 'UserController@getAuthenticatedUser');
-
-   
+    Route::get('auth', 'UserController@getAuthenticatedUser');
 
 });

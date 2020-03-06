@@ -42,7 +42,7 @@ export default class Login extends Component {
 		.then(response => {
 			localStorage.setItem('usertoken', response.data.token)
 			
-			console.log('logado')
+			history.push(`/dashboard/`)
 		})
 		.catch(err => {
 			this.setState({

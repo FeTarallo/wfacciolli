@@ -10,7 +10,7 @@ class EquipamentoController extends Controller
 {
     
     public function index(){
-        $equipamentos = Equipamento::paginate(10);
+        $equipamentos = Equipamento::all();
         return response()->json([ 'equipamentos' => $equipamentos ], 200);
     }
 

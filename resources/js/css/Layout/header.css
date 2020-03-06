@@ -5,9 +5,8 @@
    height: 100vh;
 }
 .header-container {
-   width: 100vw;
    height: 15%;
-   background-image: url("../../../../public/storage/background.png");
+   background-image: url("../../../../public/images/background.png");
    background-size: cover;
    display:flex;
    flex-direction: row;
@@ -18,7 +17,7 @@
 .header-logo {
    width: 8%;
    height: 100%;
-   background-image: url("../../../../public/storage/logo.png");
+   background-image: url("../../../../public/images/logo.png");
    background-size: cover;
    background-repeat: no-repeat;
 }

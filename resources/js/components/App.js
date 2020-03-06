@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import Header from './Header'
+import Layout from './Layout/Layout'
 import Login from './Auth/Login'
-<link
-  rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-  crossorigin="anonymous"
-/>
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { createPopper } from '@popperjs/core'
+//DASHBOARD
+import Dashboard from './Dashboard/Dashboard'
+// EQUIPAMENTOS
+import Equiapamentos from  './Equipamentos/List'
+import EquiapamentosCreate from './Equipamentos/Create'
+import EquiapamentosEdit from './Equipamentos/Edit'
+// EQUIPAMENTOS
+import Veiculos from  './Veiculos/List'
+import VeiculosCreate from './Veiculos/Create'
+import VeiculosEdit from './Veiculos/Edit'
 
 function RouteWithLayout({layout, component, ...rest}){
   return (
@@ -22,14 +24,23 @@ function RouteWithLayout({layout, component, ...rest}){
 
 
 class App extends Component {
+
+
   render () {
     return (
         <Router>
         <Switch>
           <Route path="/" exact component={localStorage.getItem('user_id') ? Redirect : Login} />
-          {/* <Route path="/profile" exact component={Profile} /> */}
-          {/* <RouteWithLayout layout={Layout} path="/customers" exact component={Customer} />
-   */}
+          
+          <RouteWithLayout layout={Layout} path="/dashboard/" exact component={Dashboard} />
+
+          <RouteWithLayout layout={Layout} path="/equipamentos/" exact component={Equiapamentos} />
+          <RouteWithLayout layout={Layout} path="/equipamentos/create" exact component={EquiapamentosCreate} />
+          <RouteWithLayout layout={Layout} path="/equipamentos/edit" exact component={EquiapamentosEdit} />
+      
+          <RouteWithLayout layout={Layout} path="/veiculos/" exact component={Veiculos} />
+          <RouteWithLayout layout={Layout} path="/veiculos/create" exact component={VeiculosCreate} />
+          <RouteWithLayout layout={Layout} path="/veiculos/edit" exact component={VeiculosEdit} />
         </Switch>
       </Router>
       )
