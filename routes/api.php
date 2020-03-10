@@ -23,8 +23,12 @@ Route::post('login', 'UserController@login');
 
 Route::resources([
     'equipamentos' => 'EquipamentoController',
-    'veiculos' => 'VeiculoController'
+    'veiculos' => 'VeiculoController',
+    'tipo-equipamento' => 'TipoEquipamentoController',
+    'setores' => 'SetorController'
 ]);
+
+Route::get('get-setores', 'SetorController@getSetores');
 
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('auth', 'UserController@getAuthenticatedUser');

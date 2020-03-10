@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Veiculo;
+use App\Models\Setor;
 use Illuminate\Http\Request;
 use App\Http\Requests\Veiculos\StoreVeiculo;
 
 class VeiculoController extends Controller
 {
     public function index(){
-        $veiculos = Veiculo::all();
+        $veiculos = Veiculo::withTrashed()->with('setores')->paginate(10);
         return response()->json([ 'veiculos' => $veiculos ], 200);
     }
 
@@ -30,5 +31,14 @@ class VeiculoController extends Controller
         return response()->json(['message' => 'veiculos atualizado com sucesso'], 200);
     }
 
-    public function destroy($id){}
+    public function destroy($id){
+        $veiculo = Veiculo::withTrashed()->findOrFail($id);
+        if($veiculo->trashed()) {
+            $veiculo->restore();
+            return response()->json(['status' => 'Veiculo restaurado'],200);
+        } else {
+            $veiculo->delete();
+            return response()->json(['status' => 'Veiculo deletado'],200);
+        }
+    }
 }

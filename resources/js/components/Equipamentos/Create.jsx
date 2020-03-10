@@ -1,4 +1,5 @@
 import React, { Component } from 'react' 
+import Form from 'react-bootstrap/Form'
 
 export default class Create extends Component {
 	constructor(props){
@@ -7,7 +8,9 @@ export default class Create extends Component {
                 numero_serie: '',
                 observacao: '',
                 tipo_equipamento_id: '',
-                setor_id: ''
+                setor_id: '',
+                tipoEquipamentos: [],
+                setores: []
             }
 	
 		this.handleFieldChange = this.handleFieldChange.bind(this)
@@ -19,7 +22,31 @@ export default class Create extends Component {
         this.setState({
           [event.target.name]: event.target.value
         })
-	}
+    }
+
+    componentDidMount(){
+        this._getTipoEquipametos()
+    }
+    
+    _getTipoEquipametos(){
+        axios.get('../api/tipo-equipamento', {
+            headers: { 'Content-Type': 'application/json' }
+        }).then(response => {
+            this.setState({
+                tipoEquipamentos: response.data.tipos
+            })
+        })
+    }
+
+    _getSetores(){
+        axios.get('../api/setores/get-setores', {
+            headers: { 'Content-Type': 'application/json' }
+        }).then(response => {
+            this.setState({
+                setores: response.data.setores
+            })
+        })
+    }
 	
 	onSubmit(e){
 		e.preventDefault()
@@ -57,8 +84,6 @@ export default class Create extends Component {
 				modalClose: () => {this.setState({show:false})}
 			})
 		})
-
-
      }
 	
 	
@@ -75,8 +100,12 @@ export default class Create extends Component {
                         <input type="text" className="form-control" name="numero_serie" value={this.state.numero_serie} onChange={this.handleFieldChange}  />
                     </div>
                     <div className="form-group col-md-6">
-                        <label>Tipo Equipamento</label>
-                        <input type="text" className="form-control" name="tipo_equipamento_id" value={this.state.tipo_equipamento_id} onChange={this.handleFieldChange}  />
+                    <Form.Label>Example select</Form.Label>
+                    <Form.Control as="select">
+                    {this.state.tipoEquipamentos.map(tipo => (
+                        <option key={tipo.id}>{tipo.nome}</option>
+                    ))}
+                    </Form.Control>
                     </div>
                 </div>
                 <div className="form-row">
@@ -91,7 +120,9 @@ export default class Create extends Component {
                         <textarea className="form-control" name="observacao" rows="3" value={this.state.observacao} onChange={this.handleFieldChange} ></textarea>
                     </div>
                 </div>
-                <button className="btn btn-success">Enviar</button>
+                <div className="text-right">
+                    <button className="btn btn-success">Enviar</button>
+                </div>
             </form>
                 </div>
            </div>

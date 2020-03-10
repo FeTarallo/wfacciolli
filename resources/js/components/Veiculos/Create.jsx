@@ -91,7 +91,9 @@ export default class Create extends Component {
                         <textarea className="form-control" name="observacao" rows="3" value={this.state.observacao} onChange={this.handleFieldChange} ></textarea>
                     </div>
                 </div>
-                <button className="btn btn-success">Enviar</button>
+                <div className="text-right">
+                    <button className="btn btn-success">Enviar</button>
+                </div>
             </form>
                 </div>
            </div>

@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Equipamento extends Model
-{
+class Equipamento extends Model{
+    use SoftDeletes;
+
     protected $table = 'equipamento';
-    protected $fillable = ['numero_serie', 'obeservaocao', 'tipo_equipamento_id','setor_id'];
+    protected $fillable = ['numero_serie', 'obeservacao', 'tipo_equipamento_id','setor_id'];
     
 
     public function tipoEquipamentos(){

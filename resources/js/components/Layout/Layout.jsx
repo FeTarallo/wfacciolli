@@ -41,7 +41,7 @@ export default class Layout extends React.Component {
           })
           .then(response => {
              this.setState({
-               auth_name: response.data.user.name
+               auth_name: response.data.user.nome
              })
           })
           .catch(err => {
@@ -69,7 +69,7 @@ export default class Layout extends React.Component {
                               <div className="text-dark">
                                <Link className='nav-link active text-dark' to='/dashboard/'><i className="fa fa-user"></i> Meus Dados</Link>
                               </div>
-                              <div className="text-dark ml-3">
+                              <div className="text-dark ml-3 mt-1">
                                <a onClick={this.logout} ><i className="fa fa-sign-out"></i> Sair</a>
                               </div>
                            </div>
@@ -83,6 +83,9 @@ export default class Layout extends React.Component {
                         <div className="header-logo"></div>
                         <div className="header-title">
                            <p className="title-dep-style">Departamento: {this.props.dep}</p>
+                        </div>
+                        <div className="header-menu text-white">
+                           <p>Olá {this.state.auth_name}</p>
                         </div>
                      </div>
                            {this.props.children}
