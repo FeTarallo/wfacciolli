@@ -1,4 +1,5 @@
 import React, { Component } from 'react' 
+import Form from 'react-bootstrap/Form'
 
 export default class Create extends Component {
 	constructor(props){
@@ -8,19 +9,34 @@ export default class Create extends Component {
                 placa: '',
                 numero: '',
                 observacao: '',
-                setor_id: ''
+                setor_id: '',
+                setores: []
             }
 	
 		this.handleFieldChange = this.handleFieldChange.bind(this)
 		this.onSubmit = this.onSubmit.bind(this)
         
-	}
+    }
+    
+    componentDidMount(){
+        this._getSetores()
+    }
 
 	handleFieldChange (event) {
         this.setState({
           [event.target.name]: event.target.value
         })
-	}
+    }
+    
+    _getSetores(){
+        axios.get('../api/setores', {
+            headers: { 'Content-Type': 'application/json' }
+        }).then(response => {
+            this.setState({
+                setores: response.data.setores
+            })
+        })
+    }
 	
 	onSubmit(e){
 		e.preventDefault()
@@ -81,8 +97,12 @@ export default class Create extends Component {
                         <input type="text" className="form-control" name="setor_id" value={this.state.setor_id} onChange={this.handleFieldChange}  />
                     </div>
                     <div className="form-group col-md-6">
-                        <label>Setor</label>
-                        <input type="text" className="form-control" name="setor_id" value={this.state.setor_id} onChange={this.handleFieldChange}  />
+                    <Form.Label>Setor</Form.Label>
+                    <Form.Control as="select">
+                    {this.state.setores.map(setor => (
+                        <option key={setor.id}>{setor.nome}</option>
+                    ))}
+                    </Form.Control>
                     </div>
                 </div>
                 <div className="form-row">

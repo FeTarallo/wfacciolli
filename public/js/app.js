@@ -84732,6 +84732,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Veiculos_Create__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Veiculos/Create */ "./resources/js/components/Veiculos/Create.jsx");
 /* harmony import */ var _Veiculos_Edit__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Veiculos/Edit */ "./resources/js/components/Veiculos/Edit.jsx");
 /* harmony import */ var _Veiculos_Edit__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_Veiculos_Edit__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _Setores_List__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Setores/List */ "./resources/js/components/Setores/List.jsx");
+/* harmony import */ var _Setores_Edit__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Setores/Edit */ "./resources/js/components/Setores/Edit.jsx");
+/* harmony import */ var _Setores_Edit__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_Setores_Edit__WEBPACK_IMPORTED_MODULE_13__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -84768,6 +84771,9 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
  // EQUIPAMENTOS
 
+
+
+ // SETORES
 
 
 
@@ -84837,6 +84843,16 @@ function (_Component) {
         path: "/veiculos/edit",
         exact: true,
         component: _Veiculos_Edit__WEBPACK_IMPORTED_MODULE_11___default.a
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(RouteWithLayout, {
+        layout: _Layout_Layout__WEBPACK_IMPORTED_MODULE_3__["default"],
+        path: "/setores/",
+        exact: true,
+        component: _Setores_List__WEBPACK_IMPORTED_MODULE_12__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(RouteWithLayout, {
+        layout: _Layout_Layout__WEBPACK_IMPORTED_MODULE_3__["default"],
+        path: "/setores/edit",
+        exact: true,
+        component: _Setores_Edit__WEBPACK_IMPORTED_MODULE_13___default.a
       })));
     }
   }]);
@@ -85051,33 +85067,48 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container mt-5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row"
+        className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-sm-6"
+        className: "col-sm-6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "card"
+        className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "card-body"
+        className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        "class": "card-title"
+        className: "card-title"
       }, "Equipamentos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        "class": "card-text"
+        className: "card-text"
       }, "Gerenciar equipamentos dispon\xEDveis"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "btn btn-primary",
         to: "/equipamentos"
       }, " Acessar")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-sm-6"
+        className: "col-sm-6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "card"
+        className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "card-body"
+        className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        "class": "card-title"
+        className: "card-title"
       }, "Veiculos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        "class": "card-text"
+        className: "card-text"
       }, "Gerenciar veiculos dispon\xEDveis"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "btn btn-primary",
         to: "/veiculos"
+      }, " Acessar"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm-6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "card-title"
+      }, "Setores"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "card-text"
+      }, "Gerenciar setores dispon\xEDveis"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "btn btn-primary",
+        to: "/setores/"
       }, " Acessar"))))));
     }
   }]);
@@ -85141,7 +85172,8 @@ function (_Component) {
       observacao: '',
       tipo_equipamento_id: '',
       setor_id: '',
-      tipoEquipamentos: []
+      tipoEquipamentos: [],
+      setores: []
     };
     _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
     _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
@@ -85157,6 +85189,8 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this._getTipoEquipametos();
+
+      this._getSetores();
     }
   }, {
     key: "_getTipoEquipametos",
@@ -85174,9 +85208,24 @@ function (_Component) {
       });
     }
   }, {
+    key: "_getSetores",
+    value: function _getSetores() {
+      var _this3 = this;
+
+      axios.get('../api/setores', {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(function (response) {
+        _this3.setState({
+          setores: response.data.setores
+        });
+      });
+    }
+  }, {
     key: "onSubmit",
     value: function onSubmit(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       e.preventDefault();
       var history = this.props.history;
@@ -85199,12 +85248,12 @@ function (_Component) {
         localStorage.setItem('usertoken', response.data.token);
         history.push("/dashboard/");
       })["catch"](function (err) {
-        _this3.setState({
+        _this4.setState({
           show: true,
           modalTitle: 'Houve um erro ao fazer login',
           modalBody: 'Essas credenciais não correspondem aos nossos registros.',
           modalClose: function modalClose() {
-            _this3.setState({
+            _this4.setState({
               show: false
             });
           }
@@ -85236,21 +85285,23 @@ function (_Component) {
         onChange: this.handleFieldChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group col-md-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Example select"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Tipo Equipamento"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
         as: "select"
       }, this.state.tipoEquipamentos.map(function (tipo) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, tipo.nome);
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: tipo.id
+        }, tipo.nome);
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group col-md-12"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Setor"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "form-control",
-        name: "setor_id",
-        value: this.state.setor_id,
-        onChange: this.handleFieldChange
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Setor"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+        as: "select"
+      }, this.state.setores.map(function (setor) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: setor.id
+        }, setor.nome);
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group col-md-12"
@@ -85733,18 +85784,38 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Veiculos/Create.jsx":
-/*!*****************************************************!*\
-  !*** ./resources/js/components/Veiculos/Create.jsx ***!
-  \*****************************************************/
+/***/ "./resources/js/components/Setores/Edit.jsx":
+/*!**************************************************!*\
+  !*** ./resources/js/components/Setores/Edit.jsx ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Setores/List.jsx":
+/*!**************************************************!*\
+  !*** ./resources/js/components/Setores/List.jsx ***!
+  \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Create; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return List; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_js_pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-js-pagination */ "./node_modules/react-js-pagination/dist/Pagination.js");
+/* harmony import */ var react_js_pagination__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_js_pagination__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_bootstrap_ModalHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/ModalHeader */ "./node_modules/react-bootstrap/esm/ModalHeader.js");
+/* harmony import */ var react_bootstrap_ModalTitle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/ModalTitle */ "./node_modules/react-bootstrap/esm/ModalTitle.js");
+/* harmony import */ var react_bootstrap_ModalBody__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap/ModalBody */ "./node_modules/react-bootstrap/esm/ModalBody.js");
+/* harmony import */ var react_bootstrap_ModalFooter__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap/ModalFooter */ "./node_modules/react-bootstrap/esm/ModalFooter.js");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap/Modal */ "./node_modules/react-bootstrap/esm/Modal.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -85767,6 +85838,251 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
+
+
+
+
+
+
+var List =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(List, _Component);
+
+  function List(props, context) {
+    var _this;
+
+    _classCallCheck(this, List);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(List).call(this, props, context));
+    _this.state = {
+      nome: '',
+      nome_setor: '',
+      setores: [],
+      total: 1,
+      per_page: 1,
+      current_page: 1,
+      show: false
+    };
+    _this._deleteSetor = _this._deleteSetor.bind(_assertThisInitialized(_this));
+    _this.handlePageChange = _this.handlePageChange.bind(_assertThisInitialized(_this));
+    _this.handleShow = _this.handleShow.bind(_assertThisInitialized(_this));
+    _this.handleClose = _this.handleClose.bind(_assertThisInitialized(_this));
+    _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
+    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(List, [{
+    key: "handleFieldChange",
+    value: function handleFieldChange(event) {
+      this.setState(_defineProperty({}, event.target.name, event.target.value));
+    }
+  }, {
+    key: "handleClose",
+    value: function handleClose() {
+      this.setState({
+        show: false
+      });
+    }
+  }, {
+    key: "handleShow",
+    value: function handleShow() {
+      this.setState({
+        show: true
+      });
+    }
+  }, {
+    key: "onSubmit",
+    value: function onSubmit(e) {
+      e.preventDefault();
+      var history = this.props.history;
+      var setor = {
+        nome: this.state.nome_setor
+      };
+      axios.post('../api/setores', {
+        nome: setor.nome
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(function (response) {
+        //localStorage.setItem('usertoken', response.data.token)
+        history.push("/setores/");
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
+  }, {
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      axios.get('../api/setores', {
+        headers: {
+          Authorization: "Bearer ".concat(localStorage.getItem('usertoken'))
+        }
+      }).then(function (response) {
+        _this2.setState({
+          setores: response.data.setores.data,
+          current_page: response.data.setores.current_page,
+          per_page: response.data.setores.per_page,
+          total: response.data.setores.total
+        });
+
+        _this2.handlePageChange(_this2.state.current_page);
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
+  }, {
+    key: "handlePageChange",
+    value: function handlePageChange(pageNumber) {
+      var _this3 = this;
+
+      axios.get('../api/setores?page=' + pageNumber, {
+        headers: {
+          Authorization: "Bearer ".concat(localStorage.getItem('usertoken'))
+        }
+      }).then(function (response) {
+        _this3.setState({
+          setores: response.data.setores.data,
+          current_page: response.data.setores.current_page,
+          per_page: response.data.setores.per_page,
+          total: response.data.setores.total
+        });
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
+  }, {
+    key: "_deleteSetor",
+    value: function _deleteSetor(setor) {
+      axios["delete"]('api/setores/' + setor, {
+        headers: {
+          Authorization: "Bearer ".concat(localStorage.getItem('usertoken'))
+        }
+      }).then(function (res) {
+        location.reload();
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card mt-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header"
+      }, "Setores"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-3 mt-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        onClick: this.handleShow
+      }, "Novo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "table-responsive mt-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Nome"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "A\xE7\xF5es"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.setores.map(function (setor) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: setor.id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, setor.nome), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "btn btn-warning btn-sm mr-2 text-white",
+          to: "/setores/".concat(setor.id)
+        }, "Editar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          className: setor.deleted_at ? 'btn btn-success btn-sm text-white' : 'btn btn-danger btn-sm text-white',
+          onClick: function onClick() {
+            return _this4._deleteSetor(setor.id);
+          }
+        }, setor.deleted_at ? 'Ativar' : 'Desativar')));
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        activePage: this.state.current_page,
+        itemsCountPerPage: this.state.per_page,
+        totalItemsCount: this.state.total,
+        onChange: this.handlePageChange,
+        itemClass: "page-item",
+        linkClass: "page-link"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        show: this.state.show,
+        onHide: this.handleClose
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__["default"].Header, {
+        closeButton: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__["default"].Title, null, "Novo Setor")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__["default"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.onSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group col-md-12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Nome"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        name: "nome_setor",
+        value: this.state.nome_setor,
+        onChange: this.handleFieldChange
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__["default"].Footer, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        variant: "secondary",
+        onClick: this.handleClose
+      }, "Fechar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        variant: "primary",
+        onClick: this.onSubmit
+      }, "Salvar"))));
+    }
+  }]);
+
+  return List;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Veiculos/Create.jsx":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/Veiculos/Create.jsx ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Create; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Form */ "./node_modules/react-bootstrap/esm/Form.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
 var Create =
 /*#__PURE__*/
 function (_Component) {
@@ -85783,7 +86099,8 @@ function (_Component) {
       placa: '',
       numero: '',
       observacao: '',
-      setor_id: ''
+      setor_id: '',
+      setores: []
     };
     _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
     _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
@@ -85791,9 +86108,29 @@ function (_Component) {
   }
 
   _createClass(Create, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this._getSetores();
+    }
+  }, {
     key: "handleFieldChange",
     value: function handleFieldChange(event) {
       this.setState(_defineProperty({}, event.target.name, event.target.value));
+    }
+  }, {
+    key: "_getSetores",
+    value: function _getSetores() {
+      var _this2 = this;
+
+      axios.get('../api/setores', {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(function (response) {
+        _this2.setState({
+          setores: response.data.setores
+        });
+      });
     }
   }, {
     key: "onSubmit",
@@ -85866,13 +86203,13 @@ function (_Component) {
         onChange: this.handleFieldChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group col-md-6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Setor"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "form-control",
-        name: "setor_id",
-        value: this.state.setor_id,
-        onChange: this.handleFieldChange
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Setor"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+        as: "select"
+      }, this.state.setores.map(function (setor) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: setor.id
+        }, setor.nome);
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group col-md-12"
@@ -86014,6 +86351,8 @@ function (_Component) {
           Authorization: "Bearer ".concat(localStorage.getItem('usertoken'))
         }
       }).then(function (response) {
+        console.log(response);
+
         _this3.setState({
           veiculos: response.data.veiculos.data,
           current_page: response.data.veiculos.current_page,

@@ -13,6 +13,9 @@ import EquiapamentosEdit from './Equipamentos/Edit'
 import Veiculos from  './Veiculos/List'
 import VeiculosCreate from './Veiculos/Create'
 import VeiculosEdit from './Veiculos/Edit'
+// SETORES
+import Setores from './Setores/List'
+import SetoresEdit from './Setores/Edit'
 
 function RouteWithLayout({layout, component, ...rest}){
   return (
@@ -41,6 +44,9 @@ class App extends Component {
           <RouteWithLayout layout={Layout} path="/veiculos/" exact component={Veiculos} />
           <RouteWithLayout layout={Layout} path="/veiculos/create" exact component={VeiculosCreate} />
           <RouteWithLayout layout={Layout} path="/veiculos/edit" exact component={VeiculosEdit} />
+
+          <RouteWithLayout layout={Layout} path="/setores/" exact component={Setores} />
+          <RouteWithLayout layout={Layout} path="/setores/edit" exact component={SetoresEdit} />
         </Switch>
       </Router>
       )

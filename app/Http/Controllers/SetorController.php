@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class SetorController extends Controller
 {
     public function index(){
-        $setores = Setor::all();
+        $setores = Setor::paginate(10);
         return response()->json(['setores' => $setores]);
     }
 
@@ -21,7 +21,7 @@ class SetorController extends Controller
 
 
     public function store(Request $request){
-     $tipoEquipamento = TipoEquipamento::create($request->all());
+     $setor = Setor::create($request->all());
      return response()->json(['message' => 'Item cadastrado com sucesso']);
     }
 
@@ -34,7 +34,8 @@ class SetorController extends Controller
 
     public function edit($id)
     {
-        //
+        $setor = Setor::find($id);
+        return response()->json([ 'setor' => $setor ]);
     }
 
     public function update(Request $request, $id)

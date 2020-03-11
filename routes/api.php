@@ -28,8 +28,6 @@ Route::resources([
     'setores' => 'SetorController'
 ]);
 
-Route::get('get-setores', 'SetorController@getSetores');
-
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('auth', 'UserController@getAuthenticatedUser');
 

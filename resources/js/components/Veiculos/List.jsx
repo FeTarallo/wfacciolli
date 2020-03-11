@@ -52,6 +52,7 @@ export default class List extends Component {
             headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` }
         })
         .then(response => {
+            console.log(response)
             this.setState({ 
                 veiculos: response.data.veiculos.data,
                 current_page: response.data.veiculos.current_page,

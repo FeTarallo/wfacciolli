@@ -26,6 +26,7 @@ export default class Create extends Component {
 
     componentDidMount(){
         this._getTipoEquipametos()
+        this._getSetores()
     }
     
     _getTipoEquipametos(){
@@ -39,7 +40,7 @@ export default class Create extends Component {
     }
 
     _getSetores(){
-        axios.get('../api/setores/get-setores', {
+        axios.get('../api/setores', {
             headers: { 'Content-Type': 'application/json' }
         }).then(response => {
             this.setState({
@@ -100,7 +101,7 @@ export default class Create extends Component {
                         <input type="text" className="form-control" name="numero_serie" value={this.state.numero_serie} onChange={this.handleFieldChange}  />
                     </div>
                     <div className="form-group col-md-6">
-                    <Form.Label>Example select</Form.Label>
+                    <Form.Label>Tipo Equipamento</Form.Label>
                     <Form.Control as="select">
                     {this.state.tipoEquipamentos.map(tipo => (
                         <option key={tipo.id}>{tipo.nome}</option>
@@ -110,8 +111,12 @@ export default class Create extends Component {
                 </div>
                 <div className="form-row">
                     <div className="form-group col-md-12">
-                        <label>Setor</label>
-                        <input type="text" className="form-control" name="setor_id" value={this.state.setor_id} onChange={this.handleFieldChange}  />
+                    <Form.Label>Setor</Form.Label>
+                    <Form.Control as="select">
+                    {this.state.setores.map(setor => (
+                        <option key={setor.id}>{setor.nome}</option>
+                    ))}
+                    </Form.Control>
                     </div>
                 </div>
                 <div className="form-row">
