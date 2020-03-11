@@ -131,65 +131,86 @@ export default class List extends Component {
 	render() {
       return (
         <div className="container">
-
-           <div className="card mt-4">
-                <div className="card-header">Equipamentos</div>
-                <div className="col-md-3 mt-4">
-                <Link className='btn btn-success mr-4 ' to='/equipamentos/create'>Novo</Link>
-                <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>Tipo</Button>
+            <div className="card mt-4 mb-4">
+                <div className="card-header text-center">
+                    Equipamentos
                 </div>
                 <div className="card-body">
-                <div className="table-responsive mt-4">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Numero de Serie</th>
-                            <th scope="col">Setor</th>
-                            <th scope="col">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>   
-                    {this.state.equipamentos.map(equipamento => (
-                        <tr key={equipamento.id}>
-                            <td>{equipamento.numero_serie}</td>
-                            <td>{equipamento.setor_id}</td>
-                            
-                            <td> <Link className="btn btn-warning btn-sm mr-2 text-white" to={`/equipamentos/${equipamento.id}`} >Editar</Link>
-                             <button type="button" className={equipamento.deleted_at ? 'btn btn-success btn-sm text-white' : 'btn btn-danger btn-sm text-white'} 
-                                onClick={() => this._deleteEquipamento(equipamento.id)}>{equipamento.deleted_at ? 'Ativar' : 'Desativar' }</button>
-                            </td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-                </div> 
-                <Pagination activePage={this.state.current_page} itemsCountPerPage={this.state.per_page} totalItemsCount={this.state.total} onChange={this.handlePageChange} itemClass="page-item" linkClass="page-link" />
-                </div>
-           </div>
-
-           <Modal show={this.state.show} onHide={this.handleClose}>
-                <Modal.Header closeButton>
-                <Modal.Title>Tipo Equipamento</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-               <form onSubmit={this.onSubmit}>                   
-                    <div className="form-row">
-                        <div className="form-group col-md-12">
-                            <label>Nome</label>
-                            <input type="text" className="form-control" name="nome_tipo" value={this.state.nome_tipo} onChange={this.handleFieldChange}  />
+                    <div className="row">
+                        <div className="col-md-8">
+                            <form id="form">
+                                <div className="form-group">
+                                    <div className="input-group">
+                                        <input id="search-input" className="form-control" type="text" name="pesquisa" />
+                                        <i id="search-button" className="btn btn-success fa fa-search ml-2 search" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div className="col-md-4">
+                            <div className="text-right">
+                                <Link className='btn btn-success mr-2' to='/equipamentos/create'>Novo Equipamento</Link>
+                                <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>Novo Tipo</Button>
+                            </div>
                         </div>
                     </div>
-               </form>
+                    <ul className="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                        <li className="nav-item">
+                            <a className="nav-link active" id="ativos-tab" data-toggle="tab" href="#ativos" role="tab" aria-controls="ativos" aria-selected="true">Equipamentos cadastrados</a>
+                        </li>
+                    </ul>
+                    <div className="tab-content" id="myTabContent">
+                        <div className="tab-pane fade show active" id="ativos" role="tabpanel"></div>
+                    </div>
+                    <div className="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr className="table-secondary table-style">
+                                    <th scope="col">Número de série</th>
+                                    <th scope="col">Setor</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>   
+                                {this.state.equipamentos.map(equipamento => (
+                                    <tr key={equipamento.id}>
+                                        <td>{equipamento.numero_serie}</td>
+                                        <td>{equipamento.setor_id}</td>
+                                        <td> 
+                                            <Link className="btn btn-warning btn-sm mr-2 text-white" to={`/equipamentos/${equipamento.id}`} >Editar</Link>
+                                            <button type="button" className={equipamento.deleted_at ? 'btn btn-success btn-sm text-white' : 'btn btn-danger btn-sm text-white'} 
+                                            onClick={() => this._deleteEquipamento(equipamento.id)}>{equipamento.deleted_at ? 'Ativar' : 'Desativar' }</button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div className="card-footer">
+                    <Pagination activePage={this.state.current_page} itemsCountPerPage={this.state.per_page} totalItemsCount={this.state.total} onChange={this.handlePageChange} itemClass="page-item" linkClass="page-link" />
+                </div>
+            </div>
+            <Modal show={this.state.show} onHide={this.handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Tipo Equipamento</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <form onSubmit={this.onSubmit}>                   
+                        <div className="form-row">
+                            <div className="form-group col-md-12">
+                                <label>Nome</label>
+                                <input type="text" className="form-control" name="nome_tipo" value={this.state.nome_tipo} onChange={this.handleFieldChange}  />
+                            </div>
+                        </div>
+                    </form>
                 </Modal.Body>
                 <Modal.Footer>
-                <Button variant="secondary" onClick={this.handleClose}>
-                    Fechar
-                </Button>
-                <Button variant="primary" onClick={this.onSubmit}>
-                    Salvar
-                </Button>
+                    <Button variant="success" onClick={this.onSubmit}>
+                        Salvar
+                    </Button>
                 </Modal.Footer>
-         </Modal>
+            </Modal>
         </div>
       )
 	}
