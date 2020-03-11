@@ -12279,6 +12279,25 @@ exports.push([module.i, ".layout-container {\r\n   width: 100vw;\r\n   height: 1
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/css/Layout/sidebar.css":
+/*!*****************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/css/Layout/sidebar.css ***!
+  \*****************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "@-webkit-keyframes swing {\r\n   0% {\r\n     transform: rotate(0deg);\r\n   }\r\n   10% {\r\n     transform: rotate(10deg);\r\n   }\r\n   30% {\r\n     transform: rotate(0deg);\r\n   }\r\n   40% {\r\n     transform: rotate(-10deg);\r\n   }\r\n   50% {\r\n     transform: rotate(0deg);\r\n   }\r\n   60% {\r\n     transform: rotate(5deg);\r\n   }\r\n   70% {\r\n     transform: rotate(0deg);\r\n   }\r\n   80% {\r\n     transform: rotate(-5deg);\r\n   }\r\n   100% {\r\n     transform: rotate(0deg);\r\n   }\r\n }\r\n \r\n @keyframes swing {\r\n   0% {\r\n     transform: rotate(0deg);\r\n   }\r\n   10% {\r\n     transform: rotate(10deg);\r\n   }\r\n   30% {\r\n     transform: rotate(0deg);\r\n   }\r\n   40% {\r\n     transform: rotate(-10deg);\r\n   }\r\n   50% {\r\n     transform: rotate(0deg);\r\n   }\r\n   60% {\r\n     transform: rotate(5deg);\r\n   }\r\n   70% {\r\n     transform: rotate(0deg);\r\n   }\r\n   80% {\r\n     transform: rotate(-5deg);\r\n   }\r\n   100% {\r\n     transform: rotate(0deg);\r\n   }\r\n }\r\n \r\n @-webkit-keyframes sonar {\r\n   0% {\r\n     transform: scale(0.9);\r\n     opacity: 1;\r\n   }\r\n   100% {\r\n     transform: scale(2);\r\n     opacity: 0;\r\n   }\r\n }\r\n \r\n @keyframes sonar {\r\n   0% {\r\n     transform: scale(0.9);\r\n     opacity: 1;\r\n   }\r\n   100% {\r\n     transform: scale(2);\r\n     opacity: 0;\r\n   }\r\n }\r\n\r\n.sidebar-icon {\r\n   background-color: #fff;\r\n   width: 25px;\r\n   height: 25px;\r\n   padding: 5px;\r\n   border-radius: 5px;\r\n}\r\n\r\n.sidebar-header a:hover > i::before {\r\n   display: inline-block;\r\n   -webkit-animation: swing ease-in-out 0.5s 1 alternate;\r\n           animation: swing ease-in-out 0.5s 1 alternate;\r\n }\r\n\r\n.sidebar-header a:hover i,\r\n.sidebar-header a:hover:before,\r\n.sidebar-header.active a i {\r\n     color: #42B22C;\r\n     text-shadow:0px 0px 10px rgba(23,137,42,0.6);\r\n }", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/lib/css-base.js":
 /*!*************************************************!*\
   !*** ./node_modules/css-loader/lib/css-base.js ***!
@@ -85141,7 +85160,8 @@ function (_Component) {
       observacao: '',
       tipo_equipamento_id: '',
       setor_id: '',
-      tipoEquipamentos: []
+      tipoEquipamentos: [],
+      setores: []
     };
     _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
     _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
@@ -85174,9 +85194,24 @@ function (_Component) {
       });
     }
   }, {
+    key: "_getSetores",
+    value: function _getSetores() {
+      var _this3 = this;
+
+      axios.get('../api/setores/get-setores', {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(function (response) {
+        _this3.setState({
+          setores: response.data.setores
+        });
+      });
+    }
+  }, {
     key: "onSubmit",
     value: function onSubmit(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       e.preventDefault();
       var history = this.props.history;
@@ -85199,12 +85234,12 @@ function (_Component) {
         localStorage.setItem('usertoken', response.data.token);
         history.push("/dashboard/");
       })["catch"](function (err) {
-        _this3.setState({
+        _this4.setState({
           show: true,
           modalTitle: 'Houve um erro ao fazer login',
           modalBody: 'Essas credenciais não correspondem aos nossos registros.',
           modalClose: function modalClose() {
-            _this3.setState({
+            _this4.setState({
               show: false
             });
           }
@@ -85239,7 +85274,9 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Example select"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
         as: "select"
       }, this.state.tipoEquipamentos.map(function (tipo) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, tipo.nome);
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: tipo.id
+        }, tipo.nome);
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -85485,34 +85522,78 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card mt-4"
+        className: "card mt-4 mb-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header"
+        className: "card-header text-center"
       }, "Equipamentos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-3 mt-4"
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-8"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        id: "form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "search-input",
+        className: "form-control",
+        type: "text",
+        name: "pesquisa"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        id: "search-button",
+        className: "btn btn-success fa fa-search ml-2 search",
+        "aria-hidden": "true"
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "btn btn-success mr-4 ",
+        className: "btn btn-success mr-2",
         to: "/equipamentos/create"
-      }, "Novo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      }, "Novo Equipamento"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
         bsStyle: "primary",
         bsSize: "large",
         onClick: this.handleShow
-      }, "Tipo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
+      }, "Novo Tipo")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "nav nav-tabs nav-justified",
+        id: "myTab",
+        role: "tablist"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "nav-link active",
+        id: "ativos-tab",
+        "data-toggle": "tab",
+        href: "#ativos",
+        role: "tab",
+        "aria-controls": "ativos",
+        "aria-selected": "true"
+      }, "Equipamentos cadastrados"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tab-content",
+        id: "myTabContent"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "table-responsive mt-4"
+        className: "tab-pane fade show active",
+        id: "ativos",
+        role: "tabpanel"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "table-responsive"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        className: "table"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        "class": "table table-hover"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "table-secondary table-style"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Numero de Serie"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, "N\xFAmero de s\xE9rie"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
       }, "Setor"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
       }, "A\xE7\xF5es"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.equipamentos.map(function (equipamento) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           key: equipamento.id
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, equipamento.numero_serie), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, equipamento.setor_id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, equipamento.numero_serie), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, equipamento.setor_id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           className: "btn btn-warning btn-sm mr-2 text-white",
           to: "/equipamentos/".concat(equipamento.id)
         }, "Editar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -85522,7 +85603,9 @@ function (_Component) {
             return _this5._deleteEquipamento(equipamento.id);
           }
         }, equipamento.deleted_at ? 'Ativar' : 'Desativar')));
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-footer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_2___default.a, {
         activePage: this.state.current_page,
         itemsCountPerPage: this.state.per_page,
         totalItemsCount: this.state.total,
@@ -85547,10 +85630,7 @@ function (_Component) {
         value: this.state.nome_tipo,
         onChange: this.handleFieldChange
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__["default"].Footer, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        variant: "secondary",
-        onClick: this.handleClose
-      }, "Fechar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        variant: "primary",
+        variant: "success",
         onClick: this.onSubmit
       }, "Salvar"))));
     }
@@ -85577,11 +85657,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _css_Layout_header_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../css/Layout/header.css */ "./resources/js/css/Layout/header.css");
 /* harmony import */ var _css_Layout_header_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_Layout_header_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var react_sidebar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-sidebar */ "./node_modules/react-sidebar/dist/react-sidebar.esm.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _css_Layout_sidebar_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../css/Layout/sidebar.css */ "./resources/js/css/Layout/sidebar.css");
+/* harmony import */ var _css_Layout_sidebar_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_Layout_sidebar_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var react_sidebar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-sidebar */ "./node_modules/react-sidebar/dist/react-sidebar.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -85601,7 +85683,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
- // import '../../css/Layout/sidebar.css'
+
 
 
 
@@ -85679,29 +85761,29 @@ function (_React$Component) {
         className: "sidebar-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sidebar-menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_sidebar__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_sidebar__WEBPACK_IMPORTED_MODULE_6__["default"], {
         sidebar: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "sidebar-header"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "text-dark"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
           className: "nav-link active text-dark",
           to: "/dashboard/"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fa fa-bars"
+          className: "fa fa-bars sidebar-icon"
         }), " Dashboard")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "text-dark"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
           className: "nav-link active text-dark",
           to: "/dashboard/"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fa fa-user"
+          className: "fa fa-user sidebar-icon"
         }), " Meus Dados")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "text-dark ml-3 mt-1"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           onClick: this.logout
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fa fa-sign-out"
+          className: "fa fa-sign-out sidebar-icon"
         }), " Sair"))),
         open: this.state.sidebarOpen,
         onSetOpen: this.onSetSidebarOpen,
@@ -86055,21 +86137,65 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card mt-4"
+        className: "card mt-4 mb-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header"
-      }, "Veiculos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-3 mt-4"
+        className: "card-header text-center"
+      }, "Ve\xEDculos"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-8"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        id: "form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "search-input",
+        className: "form-control",
+        type: "text",
+        name: "pesquisa"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        id: "search-button",
+        className: "btn btn-success fa fa-search ml-2 search",
+        "aria-hidden": "true"
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "btn btn-success",
         to: "/veiculos/create"
-      }, "Novo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
+      }, "Novo Ve\xEDculo")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "nav nav-tabs nav-justified",
+        id: "myTab",
+        role: "tablist"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "nav-link active",
+        id: "ativos-tab",
+        "data-toggle": "tab",
+        href: "#ativos",
+        role: "tab",
+        "aria-controls": "ativos",
+        "aria-selected": "true"
+      }, "Ve\xEDculos cadastrados"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tab-content",
+        id: "myTabContent"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "table-responsive mt-4"
+        className: "tab-pane fade show active",
+        id: "ativos",
+        role: "tabpanel"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "table-responsive"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        className: "table"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "table table-hover"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        className: "table-secondary table-style"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
       }, "Nome"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
@@ -86080,7 +86206,7 @@ function (_Component) {
       }, "A\xE7\xF5es"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.veiculos.map(function (veiculo) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           key: veiculo.id
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, veiculo.nome), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, veiculo.placa), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, veiculo.setores), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, veiculo.nome), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, veiculo.placa), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, veiculo.setores), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           className: "btn btn-warning btn-sm mr-2 text-white",
           to: "/veiculo/".concat(veiculo.id)
         }, "Editar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -86090,14 +86216,16 @@ function (_Component) {
             return _this5._deleteVeiculo(veiculo.id);
           }
         }, veiculo.deleted_at ? 'Ativar' : 'Desativar')));
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-footer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_2___default.a, {
         activePage: this.state.current_page,
         itemsCountPerPage: this.state.per_page,
         totalItemsCount: this.state.total,
         onChange: this.handlePageChange,
         itemClass: "page-item",
         linkClass: "page-link"
-      })));
+      }))));
     }
   }]);
 
@@ -86168,6 +86296,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./resources/js/css/Layout/sidebar.css":
+/*!*********************************************!*\
+  !*** ./resources/js/css/Layout/sidebar.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/postcss-loader/src??ref--6-2!./sidebar.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/css/Layout/sidebar.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -86186,8 +86344,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\InventDigital\wfacciolli\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\InventDigital\wfacciolli\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\WFacciolli\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\WFacciolli\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

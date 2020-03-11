@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../css/Layout/header.css'
-// import '../../css/Layout/sidebar.css'
+import '../../css/Layout/sidebar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThList } from '@fortawesome/free-solid-svg-icons'
 import { DropdownButton } from 'react-bootstrap'
@@ -56,29 +56,28 @@ export default class Layout extends React.Component {
 
 	render() {
       return (
-           
-               <div className="sidebar-container">
-                  <div className="sidebar-content">
-                     <div className="sidebar-menu">
-                     <Sidebar
-                        sidebar={
-                           <div className="sidebar-header">
-                              <div className="text-dark">
-                               <Link className='nav-link active text-dark' to='/dashboard/'><i className="fa fa-bars"></i> Dashboard</Link>
-                              </div>
-                              <div className="text-dark">
-                               <Link className='nav-link active text-dark' to='/dashboard/'><i className="fa fa-user"></i> Meus Dados</Link>
-                              </div>
-                              <div className="text-dark ml-3 mt-1">
-                               <a onClick={this.logout} ><i className="fa fa-sign-out"></i> Sair</a>
-                              </div>
+         <div className="sidebar-container">
+            <div className="sidebar-content">
+               <div className="sidebar-menu">
+                  <Sidebar
+                     sidebar={
+                        <div className="sidebar-header">
+                           <div className="text-dark">
+                              <Link className='nav-link active text-dark' to='/dashboard/'><i className="fa fa-bars sidebar-icon"></i> Dashboard</Link>
                            </div>
-                        }
-                       open={this.state.sidebarOpen}
-                       onSetOpen={this.onSetSidebarOpen}
-                       styles={{ sidebar: { background: '#eff0f1', width: 200 } }}
-                       docked={true}
-                     > 
+                           <div className="text-dark">
+                              <Link className='nav-link active text-dark' to='/dashboard/'><i className="fa fa-user sidebar-icon"></i> Meus Dados</Link>
+                           </div>
+                           <div className="text-dark ml-3 mt-1">
+                              <a onClick={this.logout} ><i className="fa fa-sign-out sidebar-icon"></i> Sair</a>
+                           </div>
+                        </div>
+                     }
+                     open={this.state.sidebarOpen}
+                     onSetOpen={this.onSetSidebarOpen}
+                     styles={{ sidebar: { background: '#eff0f1', width: 200 } }}
+                     docked={true}
+                  > 
                      <div className="header-container">
                         <div className="header-logo"></div>
                         <div className="header-title">
@@ -88,11 +87,11 @@ export default class Layout extends React.Component {
                            <p>Olá {this.state.auth_name}</p>
                         </div>
                      </div>
-                           {this.props.children}
-                     </Sidebar>
-                     </div>
-                  </div>
+                     {this.props.children}
+                  </Sidebar>
                </div>
+            </div>
+         </div>
            
       )
 	}

@@ -80,41 +80,66 @@ export default class List extends Component {
 	render() {
       return (
         <div className="container">
-
-           <div className="card mt-4">
-                <div className="card-header">Veiculos</div>
-                <div className="col-md-3 mt-4">
-                <Link className='btn btn-success' to='/veiculos/create'>Novo</Link>
+            <div className="card mt-4 mb-4">
+                <div className="card-header text-center">
+                    Veículos
                 </div>
                 <div className="card-body">
-                <div className="table-responsive mt-4">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Placa</th>
-                            <th scope="col">Setor</th>
-                            <th scope="col">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>   
-                    {this.state.veiculos.map( veiculo => (
-                        <tr key={veiculo.id}>
-                            <td>{veiculo.nome}</td>
-                            <td>{veiculo.placa}</td>
-                            <td>{veiculo.setores}</td>
-                            
-                            <td> <Link className="btn btn-warning btn-sm mr-2 text-white" to={`/veiculo/${veiculo.id}`} >Editar</Link>
-                             <button type="button" className={veiculo.deleted_at ? 'btn btn-success btn-sm text-white' : 'btn btn-danger btn-sm text-white'} 
-                                onClick={() => this._deleteVeiculo(veiculo.id)}>{veiculo.deleted_at ? 'Ativar' : 'Desativar' }</button>
-                            </td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-                </div> 
+                    <div className="row">
+                        <div className="col-md-8">
+                            <form id="form">
+                                <div className="form-group">
+                                    <div className="input-group">
+                                        <input id="search-input" className="form-control" type="text" name="pesquisa" />
+                                        <i id="search-button" className="btn btn-success fa fa-search ml-2 search" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div className="col-md-4">
+                            <div className="text-right">
+                            <Link className='btn btn-success' to='/veiculos/create'>Novo Veículo</Link>
+                            </div>
+                        </div>
+                    </div>
+                    <ul className="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                        <li className="nav-item">
+                            <a className="nav-link active" id="ativos-tab" data-toggle="tab" href="#ativos" role="tab" aria-controls="ativos" aria-selected="true">Veículos cadastrados</a>
+                        </li>
+                    </ul>
+                    <div className="tab-content" id="myTabContent">
+                        <div className="tab-pane fade show active" id="ativos" role="tabpanel"></div>
+                    </div>
+                    <div className="table-responsive">
+                        <table className="table table-hover">
+                            <thead>
+                                <tr className="table-secondary table-style">
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Placa</th>
+                                    <th scope="col">Setor</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>   
+                            {this.state.veiculos.map( veiculo => (
+                                <tr key={veiculo.id}>
+                                    <td>{veiculo.nome}</td>
+                                    <td>{veiculo.placa}</td>
+                                    <td>{veiculo.setores}</td>
+                                    <td> 
+                                        <Link className="btn btn-warning btn-sm mr-2 text-white" to={`/veiculo/${veiculo.id}`} >Editar</Link>
+                                        <button type="button" className={veiculo.deleted_at ? 'btn btn-success btn-sm text-white' : 'btn btn-danger btn-sm text-white'} 
+                                        onClick={() => this._deleteVeiculo(veiculo.id)}>{veiculo.deleted_at ? 'Ativar' : 'Desativar' }</button>
+                                    </td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </table>
+                    </div> 
                 </div>
-                <Pagination activePage={this.state.current_page} itemsCountPerPage={this.state.per_page} totalItemsCount={this.state.total} onChange={this.handlePageChange} itemClass="page-item" linkClass="page-link" />
+                <div className="card-footer">
+                    <Pagination activePage={this.state.current_page} itemsCountPerPage={this.state.per_page} totalItemsCount={this.state.total} onChange={this.handlePageChange} itemClass="page-item" linkClass="page-link" />
+                </div>
            </div>
         </div>
       )
