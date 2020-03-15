@@ -19,6 +19,7 @@ export default class List extends Component {
                 tipo_equipamento_id: '',
                 setor_id: '',
                 equipamentos: [],
+                setores: [],
                 total: 1,
                 per_page: 1,
                 current_page: 1,
@@ -102,7 +103,6 @@ export default class List extends Component {
             headers: { Authorization: `Bearer ${localStorage.getItem('usertoken')}` }
         })
         .then(response => {
-            console.log(response)
             this.setState({ 
                 equipamentos: response.data.equipamentos.data,
                 current_page: response.data.equipamentos.current_page,
@@ -150,7 +150,7 @@ export default class List extends Component {
                         <div className="col-md-4">
                             <div className="text-right">
                                 <Link className='btn btn-success mr-2' to='/equipamentos/create'>Novo Equipamento</Link>
-                                <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>Novo Tipo</Button>
+                                <Button onClick={this.handleShow}>Novo Tipo</Button>
                             </div>
                         </div>
                     </div>
@@ -163,11 +163,12 @@ export default class List extends Component {
                         <div className="tab-pane fade show active" id="ativos" role="tabpanel"></div>
                     </div>
                     <div className="table-responsive">
-                        <table class="table table-hover">
+                        <table className="table table-hover">
                             <thead>
                                 <tr className="table-secondary table-style">
                                     <th scope="col">Número de série</th>
                                     <th scope="col">Setor</th>
+                                    <th scope="col">Tipo Equipamento</th>
                                     <th scope="col">Ações</th>
                                 </tr>
                             </thead>
@@ -175,7 +176,8 @@ export default class List extends Component {
                                 {this.state.equipamentos.map(equipamento => (
                                     <tr key={equipamento.id}>
                                         <td>{equipamento.numero_serie}</td>
-                                        <td>{equipamento.setor_id}</td>
+                                        <td>{equipamento.setores}</td>
+                                        <td>{equipamento.tipo_equipamentos}</td>
                                         <td> 
                                             <Link className="btn btn-warning btn-sm mr-2 text-white" to={`/equipamentos/${equipamento.id}`} >Editar</Link>
                                             <button type="button" className={equipamento.deleted_at ? 'btn btn-success btn-sm text-white' : 'btn btn-danger btn-sm text-white'} 

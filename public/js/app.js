@@ -85230,7 +85230,8 @@ function (_Component) {
     key: "_getSetores",
     value: function _getSetores() {
       var _this3 = this;
-    axios.get('../api/setores', {
+
+      axios.get('../api/setores', {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -85425,6 +85426,7 @@ function (_Component) {
       tipo_equipamento_id: '',
       setor_id: '',
       equipamentos: [],
+      setores: [],
       total: 1,
       per_page: 1,
       current_page: 1,
@@ -85511,8 +85513,6 @@ function (_Component) {
           Authorization: "Bearer ".concat(localStorage.getItem('usertoken'))
         }
       }).then(function (response) {
-        console.log(response);
-
         _this3.setState({
           equipamentos: response.data.equipamentos.data,
           current_page: response.data.equipamentos.current_page,
@@ -85586,8 +85586,6 @@ function (_Component) {
         className: "btn btn-success mr-2",
         to: "/equipamentos/create"
       }, "Novo Equipamento"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        bsStyle: "primary",
-        bsSize: "large",
         onClick: this.handleShow
       }, "Novo Tipo")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "nav nav-tabs nav-justified",
@@ -85613,7 +85611,7 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "table-responsive"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        "class": "table table-hover"
+        className: "table table-hover"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         className: "table-secondary table-style"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
@@ -85622,10 +85620,12 @@ function (_Component) {
         scope: "col"
       }, "Setor"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
+      }, "Tipo Equipamento"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
       }, "A\xE7\xF5es"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.equipamentos.map(function (equipamento) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           key: equipamento.id
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, equipamento.numero_serie), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, equipamento.setor_id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, equipamento.numero_serie), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, equipamento.setores), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, equipamento.tipo_equipamentos), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           className: "btn btn-warning btn-sm mr-2 text-white",
           to: "/equipamentos/".concat(equipamento.id)
         }, "Editar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -86664,8 +86664,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\WFacciolli\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\WFacciolli\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\InventDigital\wfacciolli\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\InventDigital\wfacciolli\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

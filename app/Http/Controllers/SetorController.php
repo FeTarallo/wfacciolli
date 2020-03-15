@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class SetorController extends Controller
 {
     public function index(){
-        $setores = Setor::paginate(10);
+        $setores = Setor::all();
         return response()->json(['setores' => $setores]);
     }
 

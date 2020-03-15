@@ -131,7 +131,6 @@ export default class List extends Component {
 	render() {
       return (
         <div className="container">
-
            <div className="card mt-4">
                 <div className="card-header">Equipamentos</div>
                 <div className="col-md-3 mt-4">
@@ -153,7 +152,6 @@ export default class List extends Component {
                         <tr key={equipamento.id}>
                             <td>{equipamento.numero_serie}</td>
                             <td>{equipamento.setor_id}</td>
-                            
                             <td> <Link className="btn btn-warning btn-sm mr-2 text-white" to={`/equipamentos/${equipamento.id}`} >Editar</Link>
                              <button type="button" className={equipamento.deleted_at ? 'btn btn-success btn-sm text-white' : 'btn btn-danger btn-sm text-white'} 
                                 onClick={() => this._deleteEquipamento(equipamento.id)}>{equipamento.deleted_at ? 'Ativar' : 'Desativar' }</button>
